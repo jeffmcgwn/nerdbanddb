@@ -1,0 +1,30 @@
+import React, { useContext, useRef, useEffect } from 'react'
+import PublicContext from '../../context/public/publicContext'
+
+const ContactFilter = () => {
+    const publicContext = useContext(PublicContext)
+    const text = useRef()
+
+    const { filterContacts, clearFilter, filtered } = publicContext;
+    useEffect(() => {
+        if(filtered === null){
+            text.current.value = ''
+        }
+    })
+    const onChange = e => {
+        if(text.current.value !== ''){
+            filterContacts(e.target.value)
+        } else {
+            clearFilter()
+        }
+    }
+
+    return (
+        <form>
+            <input ref={text} type="text" placeholder="Search for acts..." className="input" onChange={onChange}/>     
+        </form>
+
+    )
+}
+
+export default ContactFilter

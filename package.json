@@ -1,0 +1,15 @@
+{
+  "name": "contact-keeper",
+  "version": "1.0.0",
+  "description": "Contact Keeper",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Jeff McGowan",
+  "license": "ISC"
+}
