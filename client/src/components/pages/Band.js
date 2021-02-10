@@ -1,20 +1,41 @@
 import React, { Fragment, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import ContactItem from '../contacts/ContactItem'
 import PublicContext from '../../context/public/publicContext'
+import UserContext from '../../context/user/userContext'
+
 import Spinner from '../layout/Spinner'
 
 const Band = ({ contact }) => {
     const publicContext = useContext(PublicContext)
+    const userContext = useContext(UserContext)
 
+    const { getUser, users } = userContext;
     const { contacts, filtered, getContacts, loading, current, getPublic, clearCurrent } = publicContext;
-    const { image, band, email, youtube, type, blurb, instagram, facebook, spotify, bandcamp, twitter, patreon, snapchat, twitch, website } = current;
-   
+    const { image, band, email, youtube, type, blurb, instagram, facebook, spotify, bandcamp, twitter, patreon, snapchat, twitch, website, user } = current;
+
+
     useEffect(() => {
-        getPublic();
+        getUser()
+
         // eslint-disable-next-line
     }, [])
+
+    const getName = () => {
+    for(let i=0; i<users.length; i++){
+        if(users[i]._id === user) {
+            console.log(user)
+            return users[i].name;
+             }
+        }
+    }
+    const getEmail = () => {
+    for(let i=0; i<users.length; i++){
+        if(users[i]._id === user) {
+            console.log(user)
+            return users[i].email;
+             }
+        }
+    }
 
     if(contacts !== null && contacts.length === 0 && !loading) {
         return <h4>Please select a band</h4>
@@ -34,12 +55,15 @@ const Band = ({ contact }) => {
             padding: '2rem'
           }
       }
+
+
     return (
         <div className='card'>
             <div  style={styles.background}>
             <div style={styles.content}>
 
             <h1 className="text-light text-center">
+                
                 {band.toUpperCase()}{' '} 
                 <span style={{ float:'right' }}
                     className={
@@ -65,6 +89,7 @@ const Band = ({ contact }) => {
                         <div>
 
                         {blurb ? ( <p className="formatted text-light">{blurb}</p>): ''}
+                        
                         </div>
                         </div>
 
@@ -81,12 +106,13 @@ const Band = ({ contact }) => {
                     {snapchat ? (<a href={`${snapchat}`} target='blank'><i className="fab fa-2x grow spin fa-snapchat"></i> </a>) : ''}
                     {twitch ? (<a href={`${twitch}`} target='blank'><i className="fab fa-2x grow spin fa-twitch"></i> </a>) : ''}
                     {website ? (<a href={`${website}`} target='blank'><i className="fas fa-2x grow spin fa-globe"></i> </a>) : ''}
-
+                   
                 </div>
             </div>
             <Link to="/vgm">
             <i class="text-primary fas fa-3x fa-arrow-alt-circle-left grow"></i>
             </Link>
+            {users ? <p className='credit' style={{ float:'right' }}>Submitted by  <a href={`mailto:${getEmail()}`}>{getName()} </a></p> : ''}
             </div>
             </div>
         </div>

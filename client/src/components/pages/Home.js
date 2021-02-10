@@ -18,7 +18,7 @@ const Home = () => {
             <br/><br/>
 
             <div className="grid-2">
-                <div>
+                <div id="bandForm">
                     <ContactForm />
                 </div>
                 <div>

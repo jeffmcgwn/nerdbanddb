@@ -64,7 +64,7 @@ export default (state, action) => {
                       if(state.contacts){
                       shuffle(state.contacts)
                       } else {
-                          alert('Click it again (Weird bug I am trying to fix)')
+                          console.log('Not ready')
                       }
                         return {
                             ...state,
@@ -74,7 +74,7 @@ export default (state, action) => {
                 if(state.contacts){
                     shuffle(state.contacts)
                     } else {
-                        alert('Click it again (Weird bug I am trying to fix)')
+                        console.log('Not ready')
                     }
                 return {
                     ...state,

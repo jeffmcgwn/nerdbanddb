@@ -29,16 +29,16 @@ const Bands = ({ contact }) => {
     return (
         
 
-            <div>
-                
+            <Fragment>
+                    {contacts !== null && !loading ? (
+                 <Fragment>
                 <div className="btn-container">
-
+                <Sort />
                 <BandRandomizer/>
                 <BandPicker />
-
                 </div>
-                <Sort />
-            {contacts !== null && !loading ? (
+
+
                 <TransitionGroup className="grid-5">
                      {filtered !== null ? filtered.map(contact => (
                           <CSSTransition key={contact._id} timeout={500} classNames="item">
@@ -54,8 +54,9 @@ const Bands = ({ contact }) => {
                         </CSSTransition>
                             ))}
                     </TransitionGroup>
+                    </Fragment>
             ) : <Spinner />}
-            </div>
+            </Fragment>
 
     )
 }

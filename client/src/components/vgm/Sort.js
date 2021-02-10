@@ -13,12 +13,12 @@ const Sort = () => {
 
     }
     return (
-        <div>
-                <select className="btn-filter" id="dropdown" onChange={test} placeholder="Select Genre">
-                <option value="" disabled selected>Select Genre</option>
-                    <option value="VGM" className="btn-filter">VGM</option>
-                    <option value="Nerd" className="btn-filter">Nerd Culture Band</option>
-                    <option value="Chiptune" className="btn-filter">Chiptune</option>
+        <div className="box">
+                <select onChange={test}>
+                <option value="">All Genres</option>
+                    <option value="VGM" >VGM</option>
+                    <option value="Nerd" >Nerd Culture</option>
+                    <option value="Chiptune" >Chiptune</option>
                 </select>
         </div>
 

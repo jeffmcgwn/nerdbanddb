@@ -6,7 +6,20 @@ const config = require('config')
 const { check, validationResult } = require('express-validator/check');
 const User = require('../models/User');
 
-const user = require('../models/User')
+
+// @route   GET api/users
+// @desc    Register a user
+// @access  Public
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find({ user: req.user }).sort({ date: -1 });
+        res.json(users)
+        console.log(users)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error')
+    }
+})
 
 // @route   POST api/users
 // @desc    Register a user

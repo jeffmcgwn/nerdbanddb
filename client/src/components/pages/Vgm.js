@@ -6,7 +6,7 @@ import ContactFilter from '../contacts/ContactFilter'
 const Vgm = () => {
     return (
         <div>
-            <h1 className="text-center text-light">THE LIST</h1>
+            <h1 className="text-center text-light">THE DEFINITIVE LIST OF NERD BANDS</h1>
 
         <div>
         <ContactFilter />

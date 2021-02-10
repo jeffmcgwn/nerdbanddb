@@ -18,6 +18,7 @@ import BandRoute from './components/routing/BandRoute'
 import ContactContext from './context/contact/contactContext'
 import ContactState from './context/contact/ContactState';
 import PublicState from './context/public/PublicState';
+import UserState from './context/user/UserState';
 import AuthState from './context/auth/AuthState'
 import AlertState from './context/alert/AlertState'
 import setAuthToken from './utils/setAuthToken'
@@ -30,6 +31,7 @@ const App = () => {
 
   return(
     <AuthState>
+      <UserState>
     <ContactState>
       <PublicState>
     <AlertState>
@@ -51,7 +53,8 @@ const App = () => {
         </Router>
       </AlertState>
       </PublicState>
-  </ContactState>  
+  </ContactState> 
+  </UserState> 
   </AuthState>
   )
 }

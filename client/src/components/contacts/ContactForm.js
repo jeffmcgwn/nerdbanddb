@@ -52,7 +52,7 @@ const ContactForm = () => {
 
     const { band, email, youtube, image, type, spotify, instagram, facebook, bandcamp, twitter, blurb, twitch, website, patreon, snapchat } = contact
 
-    const onChange = e => setContact({ ...contact , [e.target.name]: e.target.value })
+    const onChange = e => setContact({ ...contact , [e.target.name]: formatted(e.target.value) })
 
     const onSubmit = e => {
         e.preventDefault();
@@ -62,6 +62,17 @@ const ContactForm = () => {
         updateContact(contact)
     }
         clearAll()
+    }
+
+    let formatted = (site) => {
+        if(site.charAt(0) === 'w') {
+            site = 'https://' + site;
+        } 
+        return site
+    }
+
+    const onSub = () => {
+        formatted(facebook)
     }
     return (
         <form onSubmit={onSubmit}>
@@ -191,7 +202,7 @@ const ContactForm = () => {
             <input type="radio" name="type" value="nerdband" checked={type === 'nerdband'} onChange={onChange}/>
             {' '} Nerd Culture Band
             <div>
-                <input type="submit" value={current ? 'Update Contact' : 'Add Contact'} className="btn btn-primary btn-block"/>
+                <input type="submit" onClick={onSub} value={current ? 'Update Contact' : 'Add Contact'} className="btn btn-primary btn-block"/>
             </div>
             {current && <div>
                 <button className="btn-light btn-block" onClick={clearAll}>Clear</button>

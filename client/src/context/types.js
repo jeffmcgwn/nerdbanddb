@@ -1,5 +1,7 @@
 export const GET_CONTACTS = 'GET_CONTACTS';
 export const GET_PUBLIC = 'GET_PUBLIC';
+export const GET_USER = 'GET_USER';
+export const USER_ERROR = 'USER_ERROR';
 export const ADD_CONTACT = 'ADD_CONTACT';
 export const DELETE_CONTACT = 'DELETE_CONTACT';
 export const SET_CURRENT = 'SET_CURRENT';

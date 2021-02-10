@@ -22,7 +22,7 @@ const Contacts = () => {
             {contacts !== null && !loading ? (
                 <TransitionGroup>
                     <h2 className="text-light">My Bands</h2>
-                        <div className="grid-1">
+                        <div className="grid-2">
                      {filtered !== null ? filtered.map(contact => (
                           <CSSTransition key={contact._id} timeout={500} classNames="item">
                               <ContactItem contact={contact}/>
